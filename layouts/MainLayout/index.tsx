@@ -11,6 +11,10 @@ export const MainLayout = ({ title, children }: IMainLayout) => {
     <div className="flex flex-col h-full min-h-full dark:bg-gray-700">
       <Head>
         <title>{title}</title>
+        <meta
+          name="description"
+          content="GladCraft.ru - лучший майнкрафт сервер с индустриальными модами"
+        />
       </Head>
       <SnowFlakes />
       {/* <NavBar /> */}
