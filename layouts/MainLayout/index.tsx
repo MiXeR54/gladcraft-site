@@ -11,6 +11,7 @@ export const MainLayout = ({ title, children }: IMainLayout) => {
     <div className="flex flex-col h-full min-h-full dark:bg-gray-700">
       <Head>
         <title>{title}</title>
+        <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
           content="GladCraft.ru - лучший майнкрафт сервер с индустриальными модами"
