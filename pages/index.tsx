@@ -12,10 +12,10 @@ export default function Home() {
     <MainLayout title="Главная | GladCraft.ru">
       <div className="w-full h-full flex flex-col md:flex-row items-center justify-around">
         <div className="flex flex-col text-center justify-start">
-          <h1 className="text-2xl md:text-5xl text-zinc-200">
+          <h1 className="text-2xl md:text-5xl font-bold text-zinc-200">
             GladCraft: Новогодний сезон
           </h1>
-          <p className="text-md text-zinc-300">
+          <p className="text-md text-zinc-300 font-mono">
             Возвращение легендарного сервера в новом обличии!
           </p>
         </div>
