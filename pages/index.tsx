@@ -1,4 +1,5 @@
 import { Button, Input } from "components";
+import { LauncherCards } from "containers";
 import { MainLayout } from "layouts";
 import { useForm } from "react-hook-form";
 
@@ -18,6 +19,7 @@ export default function Home() {
           <p className="text-md text-zinc-300 font-mono">
             Возвращение легендарного сервера в новом обличии!
           </p>
+          <LauncherCards />
         </div>
         <div className="dark:bg-gray-600 w-full md:w-1/4 rounded-xl flex flex-col items-center justify-center gap-2 p-4">
           <h2 className="font-bold text-xl mb-2 text-zinc-200">Регистрация</h2>
