@@ -1,12 +1,5 @@
-import Head from "next/head";
+import { MainLayout } from "layouts";
 
 export default function Home() {
-  return (
-    <>
-      <Head>
-        <title>GladCraft.ru</title>
-      </Head>
-      <main className="flex"></main>
-    </>
-  );
+  return <MainLayout title="Главная | GladCraft.ru">Home Page</MainLayout>;
 }
