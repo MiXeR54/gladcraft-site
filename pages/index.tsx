@@ -9,6 +9,7 @@ export default function Home() {
   const handleSubmit = () => {
     console.log(getValues());
   };
+
   return (
     <MainLayout title="Главная | GladCraft.ru">
       <div className="w-full h-full flex flex-col md:flex-row items-center justify-around">
