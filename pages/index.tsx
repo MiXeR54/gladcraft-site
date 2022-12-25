@@ -4,6 +4,7 @@ import { MainLayout } from "layouts";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { toast } from "react-toastify";
 
 interface IRegisterForm {
   login: string;
@@ -29,7 +30,12 @@ const schema = yup
   .required();
 
 export default function Home() {
-  const { getValues, control } = useForm<IRegisterForm>({
+  const {
+    getValues,
+    control,
+    reset,
+    formState: { isValid },
+  } = useForm<IRegisterForm>({
     mode: "all",
     defaultValues: {
       login: "",
@@ -48,7 +54,10 @@ export default function Home() {
       body: JSON.stringify(getValues()),
     })
       .then((res) => res.json())
-      .then(console.log);
+      .then((msg) => {
+        reset();
+        toast(msg.message);
+      });
   };
 
   return (
@@ -65,11 +74,14 @@ export default function Home() {
         </div>
         <div className="dark:bg-gray-600 w-full md:w-1/4 rounded-xl flex flex-col items-center justify-center gap-2 p-4">
           <h2 className="font-bold text-xl mb-2 text-zinc-200">Регистрация</h2>
-
           <Input name="login" control={control} />
           <Input name="email" control={control} />
           <Input name="password" control={control} />
-          <Button className="mt-2" disabled onClick={() => handleSubmit()}>
+          <Button
+            className="mt-2"
+            disabled={!isValid}
+            onClick={() => isValid && handleSubmit()}
+          >
             Создать аккаунт
           </Button>
         </div>

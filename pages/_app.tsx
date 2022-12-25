@@ -3,6 +3,8 @@ import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
 import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 declare module "next-auth" {
   interface Session {
@@ -18,6 +20,7 @@ const App = ({
     <ThemeProvider enableSystem={false} defaultTheme="dark" attribute="class">
       <SessionProvider session={session}>
         <Component {...pageProps} />
+        <ToastContainer theme="dark" />
       </SessionProvider>
     </ThemeProvider>
   );
