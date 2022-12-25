@@ -45,6 +45,8 @@ const LauncherCard = ({ type, url, img, alt }: ILauncherCard) => {
   return (
     <a
       className="dark:bg-gray-600 hover:bg-gray-500 p-2 rounded-xl text-zinc-200 flex gap-2 flex-col"
+      target="_blank"
+      rel="noreferrer"
       href={url}
     >
       <Image src={img} width={80} height={80} alt={alt} />
