@@ -5,19 +5,19 @@ const launchers = [
     type: "Windows",
     img: "/windows.svg",
     alt: "windows logo",
-    url: "http://launcher.gladcraft.ru/Launcher.exe",
+    url: "https://launcher.gladcraft.ru/Launcher.exe",
   },
   {
     type: "MacOS",
     img: "/mac.svg",
     alt: "macos logo",
-    url: "http://launcher.gladcraft.ru/Launcher.jar",
+    url: "https://launcher.gladcraft.ru/Launcher.jar",
   },
   {
     type: "Linux",
     img: "/linux.svg",
     alt: "linux logo",
-    url: "http://launcher.gladcraft.ru/Launcher.jar",
+    url: "https://launcher.gladcraft.ru/Launcher.jar",
   },
 ];
 
