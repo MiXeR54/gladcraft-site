@@ -2,12 +2,53 @@ import { Button, Input } from "components";
 import { LauncherCards } from "containers";
 import { MainLayout } from "layouts";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+interface IRegisterForm {
+  login: string;
+  email: string;
+  password: string;
+}
+
+const schema = yup
+  .object({
+    login: yup
+      .string()
+      .required("Поле является обязательным")
+      .min(6, "Минимум 6 символов"),
+    email: yup
+      .string()
+      .email("Введите валидный email адрес")
+      .required("Поле является обязательным"),
+    password: yup
+      .string()
+      .required("Поле является обязательным")
+      .min(6, "Минимум 6 символов"),
+  })
+  .required();
 
 export default function Home() {
-  const { register, getValues } = useForm();
+  const { getValues, control } = useForm<IRegisterForm>({
+    mode: "all",
+    defaultValues: {
+      login: "",
+      password: "",
+      email: "",
+    },
+    resolver: yupResolver(schema),
+  });
 
-  const handleSubmit = () => {
-    console.log(getValues());
+  const handleSubmit = async () => {
+    fetch("/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(getValues()),
+    })
+      .then((res) => res.json())
+      .then(console.log);
   };
 
   return (
@@ -24,9 +65,10 @@ export default function Home() {
         </div>
         <div className="dark:bg-gray-600 w-full md:w-1/4 rounded-xl flex flex-col items-center justify-center gap-2 p-4">
           <h2 className="font-bold text-xl mb-2 text-zinc-200">Регистрация</h2>
-          <Input placeholder="Login" {...register("login")} />
-          <Input placeholder="E-mail" {...register("email")} />
-          <Input placeholder="Password" {...register("password")} />
+
+          <Input name="login" control={control} />
+          <Input name="email" control={control} />
+          <Input name="password" control={control} />
           <Button className="mt-2" disabled onClick={() => handleSubmit()}>
             Создать аккаунт
           </Button>

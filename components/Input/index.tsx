@@ -1,17 +1,26 @@
-import { forwardRef } from "react";
+import {
+  FieldPath,
+  FieldValues,
+  useController,
+  UseControllerProps,
+} from "react-hook-form";
 
-interface IInput extends React.InputHTMLAttributes<HTMLInputElement> {}
-
-export const Input = forwardRef<HTMLInputElement, IInput>(
-  ({ ...rest }, ref) => {
-    return (
+export function Input<
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+>(props: UseControllerProps<TFieldValues, TName>) {
+  const {
+    field,
+    fieldState: { error },
+  } = useController(props);
+  return (
+    <>
       <input
+        {...field}
+        placeholder={props.name}
         className="flex rounded-md bg-zinc-700 p-2 w-full"
-        ref={ref}
-        {...rest}
-      ></input>
-    );
-  }
-);
-
-Input.displayName = "Input";
+      />
+      {error && <p className="flex text-red-300">{error.message}</p>}
+    </>
+  );
+}
