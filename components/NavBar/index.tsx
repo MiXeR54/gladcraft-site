@@ -3,7 +3,7 @@ export const NavBar = () => {
     <header className="w-full">
       <div className="container flex justify-center items-center h-12">
         <a
-          href="https://map.gladcraft.ru"
+          href="https://s1map.gladcraft.ru"
           target="_blank"
           rel="noreferrer"
           className="flex text-zinc-300 hover:underline"
