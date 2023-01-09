@@ -17,6 +17,7 @@ export function Input<
     <>
       <input
         {...field}
+        type={props.name === "password" ? "password" : "text"}
         placeholder={props.name}
         className="flex rounded-md bg-zinc-700 p-2 w-full"
       />
